@@ -1,0 +1,23 @@
+<div class="carousel-wrapper full-width" [ngStyle]="{height: slideHeight}">
+  <div class="carousel full-height">
+    <button mat-mini-fab class="carousel-nav-prev" (click)="goToPreviousSlide()" *ngIf="showSlideNavigations">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <div class="slide-container full-height mat-elevation-z2" #carousel>
+      <ng-content select="sh-carousel-slide"></ng-content>
+    </div>
+    <button mat-mini-fab color="primary" class="carousel-nav-next" (click)="goToNextSlide()" *ngIf="showSlideNavigations">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="carousel-slide-indicator" fxLayoutAlign="center center" fxLayoutGap="8px" *ngIf="showSlidePagination && !isLoadingSlides">
+      <ng-template [ngIf]="carouselPaginatorView === 'dots'">
+        <span *ngFor="let slide of carouselSlides; let i = index" (click)="goToSlide(i)" class="carousel-dot"
+          [ngClass]="{'carousel-dot-active': i === activeSlideIndex}">
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="carouselPaginatorView === 'fraction'">
+        <span class="carousel-fraction">{{activeSlideIndex+1}} / {{carouselSlides.length}}</span>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+@import '../../app/sh-carousel/sh-carousel.component.scss';
+
+@mixin custom-components-theme($theme) {
+  @include sh-carousel-theming($theme);
+}
